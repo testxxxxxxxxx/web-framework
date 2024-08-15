@@ -40,13 +40,10 @@ namespace Server
 
             void operator()(int o);
 
-        private:
-
-            virtual int create() override; 
-            virtual void setConfig() override;
-
         public:
 
+            virtual int create() override;
+            virtual void setConfig() override;
             virtual void sendResponse(char *buffer) override;
             virtual char* read() override;
             virtual void start() override;
