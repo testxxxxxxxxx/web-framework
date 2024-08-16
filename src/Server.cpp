@@ -9,7 +9,7 @@ using namespace Server;
 ServerHandler ServerHandler::operator=(const ServerHandler& s)
 {
 
-    return ServerHandler(8080, 1);
+    return ServerHandler(9998, 1);
 }
 void ServerHandler::operator()(int o)
 {
@@ -70,17 +70,24 @@ char* ServerHandler::read()
 }
 void ServerHandler::start()
 {
+    //accepting new connections to server
+
     this->newSocket = accept(this->fd, (struct sockaddr *)&this->address, &addrlen);
 
     if(this->newSocket < 0)
         throw string("Accept error");
 
 }
-void ServerHandler::closeSocket()
+void ServerHandler::closeAccept()
 {
-    //close newSocket and fd sockets
+    //close newSocket
 
    close(this->newSocket);
-   close(this->fd);
+}
+void ServerHandler::closeSocket()
+{
+    //close socket
+
+    close(this->fd);
 
 }

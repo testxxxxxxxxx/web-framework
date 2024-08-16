@@ -19,6 +19,7 @@ namespace Server
             virtual void sendResponse(char* buffer) = 0;
             virtual char* read() = 0;
             virtual void start() = 0;
+            virtual void closeAccept() = 0;
             virtual void closeSocket() = 0;
 
     };
@@ -47,6 +48,7 @@ namespace Server
             virtual void sendResponse(char *buffer) override;
             virtual char* read() override;
             virtual void start() override;
+            virtual void closeAccept() override;
             virtual void closeSocket() override;
 
     };

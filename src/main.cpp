@@ -9,17 +9,24 @@ int main(int argc, char *argv[])
     //Test case:
 
     ServerInterface *serverInterface;
-    ServerHandler *serverHandler = new ServerHandler(8080, 1);
+    ServerHandler *serverHandler = new ServerHandler(9998, 1);
 
     serverInterface = serverHandler;
 
     serverInterface->create();
 
-    serverInterface->setConfig();
+    serverHandler->setConfig();
 
-    serverInterface->start();
+    while(true)
+    {
 
-    serverInterface->sendResponse("HTTP/1.1 200 OK\nContent-Type:text/html\nContent-Length: 256\n\n<h1>Server testing</h1>");
+        serverInterface->start();
+
+        serverInterface->sendResponse("HTTP/1.1 200 OK\nContent-Type:text/html\nContent-Length: 256\n\n<h1>Server testing</h1>");
+
+        serverInterface->closeAccept();
+
+    }
 
     serverInterface->closeSocket();
 
