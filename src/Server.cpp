@@ -9,7 +9,7 @@ using namespace Server;
 ServerHandler ServerHandler::operator=(const ServerHandler& s)
 {
 
-    return ServerHandler(9998, 1);
+    return ServerHandler();
 }
 void ServerHandler::operator()(int o)
 {

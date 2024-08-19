@@ -31,7 +31,7 @@ namespace Server
 
         public:
 
-            ServerHandler(int port, int opt) : port(port), opt(opt)
+            ServerHandler(int port = 0, int opt = 1) : port(port), opt(opt)
             {
 
             }
