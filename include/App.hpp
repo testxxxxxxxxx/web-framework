@@ -12,19 +12,13 @@ namespace Application
 {
     class App
     {
-        int port;
-        ServerInterface *serverInterface;
+        static ServerInterface *serverInterface;
 
         public:
 
-            App(int port);
-            ~App();
-
-            App operator=(const App &a);
-
-            void operator()(int o);
-
-            void init();
+            static void init(int port);
+            static void render(char* httpQuery);
+            static void close();
 
     };
 
