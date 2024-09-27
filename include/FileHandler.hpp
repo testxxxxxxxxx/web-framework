@@ -13,6 +13,7 @@ namespace File
     {
         public:
 
+            virtual void open() = 0;
             virtual string getContent() = 0;
 
     };
@@ -31,6 +32,10 @@ namespace File
             void operator()(int o);
 
             virtual string getContent() override;
+
+        private:
+
+            virtual void open() override;
 
     };
 

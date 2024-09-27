@@ -33,6 +33,11 @@ void FileHandler::operator()(int o)
     };
 
 }
+void FileHandler::open()
+{
+    this->file.open(this->name, ios::in);
+
+}
 string FileHandler::getContent()
 {
 
