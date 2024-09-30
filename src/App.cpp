@@ -16,13 +16,13 @@ void App::init(int port)
     serverInterface->setConfig();
 
 }
-void App::render(char* httpQuery)
+void App::render(const char* httpQuery)
 {
     while(true)
     {
         serverInterface->start();
 
-        serverInterface->sendResponse(httpQuery);
+        serverInterface->sendResponse((char *)httpQuery);
 
         serverInterface->closeAccept();
 

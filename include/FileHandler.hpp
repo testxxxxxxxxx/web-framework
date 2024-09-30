@@ -25,7 +25,7 @@ namespace File
         public:
 
             FileHandler(string name = "index.html");
-            ~FileHandler();
+            virtual ~FileHandler() = default;
 
             FileHandler operator=(const FileHandler &f);
 

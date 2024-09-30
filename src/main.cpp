@@ -1,8 +1,10 @@
 #include <iostream>
 #include "../include/App.hpp"
+#include "../include/FileHandler.hpp"
 
 using namespace std;
 using namespace Application;
+using namespace File;
 
 int main(int argc, char *argv[])
 {
@@ -30,9 +32,17 @@ int main(int argc, char *argv[])
 
     serverInterface->closeSocket();*/
 
+    FileHandler *file = new FileHandler();
+
     App::init(9998);
 
-    App::render("HTTP/1.1 200 OK\nContent-Type:text/html\nContent-Length: 256\n\n<h1>Server testing</h1>");
+    //App::render("HTTP/1.1 200 OK\nContent-Type:text/html\nContent-Length: 256\n\n<h1>Server testing</h1>");
+
+    string content = file->getContent();
+
+    string httpQuery = "HTTP/1.1 200 OK\nContent-Type:text/html\nContent-Length: 256\n\n" + content;
+
+    App::render(httpQuery.c_str());
 
     App::close();
 

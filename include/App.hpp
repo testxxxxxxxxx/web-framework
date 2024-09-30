@@ -17,7 +17,7 @@ namespace Application
         public:
 
             static void init(int port);
-            static void render(char* httpQuery);
+            static void render(const char* httpQuery);
             static void close();
 
     };
