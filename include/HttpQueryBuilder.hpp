@@ -25,12 +25,12 @@ namespace HttpQuery
     };
     class HttpQueryBuilder : public HttpQueryInterface
     {
-        int status;
-        string filename; 
+        int status, contentLength;
+        string filename, contentType;
 
         public:
 
-            HttpQueryBuilder(int status, string filename);
+            HttpQueryBuilder(int status, string filename, string contentType, int contentLength);
             virtual ~HttpQueryBuilder() = default;
 
             HttpQueryBuilder operator=(const HttpQueryBuilder &h);

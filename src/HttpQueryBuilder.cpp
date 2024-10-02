@@ -4,14 +4,14 @@
 using namespace std;
 using namespace HttpQuery;
 
-HttpQueryBuilder::HttpQueryBuilder(int status, string filename): status(status), filename(filename)
+HttpQueryBuilder::HttpQueryBuilder(int status, string filename, string contentType, int contentLength): status(status), filename(filename), contentType(contentType), contentLength(contentLength)
 {
 
 }
 HttpQueryBuilder HttpQueryBuilder::operator=(const HttpQueryBuilder &h)
 {
 
-    return HttpQueryBuilder(200, "index.html");
+    return HttpQueryBuilder(200, "index.html", "text/html", 0);
 }
 void HttpQueryBuilder::operator()(int o)
 {
@@ -30,5 +30,10 @@ void HttpQueryBuilder::operator()(int o)
 }
 string HttpQueryBuilder::getQuery()
 {
+    string strStatus = to_string(this->status);
 
+    if(this->status == 200)
+        strStatus += " OK";
+
+    string httpQuery = string("HTTP/1.1") + " " + strStatus + "\n" +" Content-Type:" + this->contentType + "\n" +" Content-Length:" + to_string(this->contentLength) + "\n"; 
 }
